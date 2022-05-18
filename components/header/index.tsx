@@ -12,7 +12,7 @@ import { FORM_ID, SEARCH_INPUT_ID } from "../../utils/config";
 import useSearch from "../../hooks/useSearch";
 
 const Header: React.FunctionComponent = () => {
-  const { handleOnSubmit } = useSearch();
+  const { handleOnSubmit, searchStr } = useSearch();
   const { pathname } = useRouter();
 
   return (
@@ -30,7 +30,7 @@ const Header: React.FunctionComponent = () => {
         <ul className={cx("flex", "space-x-2", "w-full")}>
           {pathname !== "/" && (
             <li data-testid="navBackBtn">
-              <Link href="/">
+              <Link href={searchStr ? `/?search=${searchStr}` : "/"}>
                 <a
                   className={cx(
                     "inline-flex",
